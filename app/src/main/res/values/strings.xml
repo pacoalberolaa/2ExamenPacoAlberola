@@ -1,4 +1,8 @@
 <resources>
 
     <string name="fitness">Fitness</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="textview">TextView</string>
+    <string name="nombre">Nombre</string>
+    <string name="fecha">Fecha</string>
 </resources>

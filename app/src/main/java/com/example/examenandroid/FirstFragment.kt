@@ -1,12 +1,14 @@
 package com.example.examenandroid
 
+import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.examenandroid.databinding.FragmentFirstBinding
+import androidx.fragment.app.activityViewModels
+import com.example.practica5.databinding.FragmentFirstBinding
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -14,6 +16,7 @@ import com.example.examenandroid.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+    private val viewModel: AppViewModel by activityViewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -29,16 +32,26 @@ class FirstFragment : Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+    fun borrarTarea(tarea:Tarea){
+        AlertDialog.Builder(activity as Context)
+            .setTitle(android.R.string.dialog_alert_title)
+            //recuerda: todo el texto en string.xml
+            .setMessage("Desea borrar la Tarea ${tarea.id}?")
+            //acción si pulsa si
+            .setPositiveButton(android.R.string.ok){v,_->
+                //borramos la tarea
+                viewModel.delTarea(tarea)
+                //cerramos el dialogo
+                v.dismiss()
+            }
+            //accion si pulsa no
+            .setNegativeButton(android.R.string.cancel){v,_->v.dismiss()}
+            .setCancelable(false)
+            .create()
+            .show()
     }
 }
