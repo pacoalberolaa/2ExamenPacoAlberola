@@ -1,20 +1,14 @@
-package com.example.examenandroid
+package com.example.practica5
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.practica5.R
 import com.example.practica5.databinding.FragmentSecondBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -70,7 +64,7 @@ class SecondFragment : Fragment() {
      */
     private fun iniciaTarea(tarea: Tarea) {
         binding.cbFavoritos.isSelected = tarea.favorito
-        binding.rbFitness.isChecked = tarea.fitness
+        binding.cbFitness.isChecked = tarea.fitness
         binding.tvNombreTarea.text = tarea.nombre
         binding.etFechaTarea.setText(tarea.fecha)
         //cambiamos el título
@@ -79,7 +73,7 @@ class SecondFragment : Fragment() {
 
     private fun guardaTarea() {
         //recuperamos los datos
-        val fitness=binding.rbFitness.isChecked
+        val fitness=binding.cbFitness.isChecked
         val favorito=binding.cbFavoritos.isChecked
 
         val nombre=binding.tvNombreTarea.text.toString()

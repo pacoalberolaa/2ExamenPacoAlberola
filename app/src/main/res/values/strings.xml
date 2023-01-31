@@ -1,8 +1,10 @@
 <resources>
-
+    <string name="app_name">"ExamenAndroid"</string>
     <string name="fitness">Fitness</string>
     <string name="favoritos">Favoritos</string>
     <string name="textview">TextView</string>
     <string name="nombre">Nombre</string>
     <string name="fecha">Fecha</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="action_settings">Action Settings</string>
 </resources>

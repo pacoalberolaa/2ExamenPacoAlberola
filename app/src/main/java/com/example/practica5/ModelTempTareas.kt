@@ -1,4 +1,4 @@
-package com.example.examenandroid
+package com.example.practica5
 
 import android.app.Application
 import android.content.Context
@@ -6,8 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlin.concurrent.fixedRateTimer
-import kotlin.random.Random
 
 object ModelTempTareas {
     //lista de tareas
@@ -61,6 +59,25 @@ object ModelTempTareas {
         //devuelve el LiveData con la  lista filtrada o entera
         tareasLiveData.value=if(favoritas)
             tareas.filter { !it.favorito } as ArrayList<Tarea>
+        else
+            tareas
+        return tareasLiveData
+    }
+
+    fun getAllTareasFitness(fitness:Boolean): LiveData<ArrayList<Tarea>> {
+        //devuelve el LiveData con la  lista filtrada o entera
+        tareasLiveData.value=if(fitness)
+            tareas.filter { !it.favorito } as ArrayList<Tarea>
+        else
+            tareas
+        return tareasLiveData
+    }
+
+    fun getAllTareasFitnessYFavoritas(fitness: Boolean, favoritas: Boolean): LiveData<ArrayList<Tarea>>{
+        tareasLiveData.value=if(favoritas || fitness) {
+            tareas.filter { !it.favorito } as ArrayList<Tarea>
+            tareas.filter { !it.fitness } as ArrayList<Tarea>
+        }
         else
             tareas
         return tareasLiveData

@@ -1,4 +1,4 @@
-package com.example.examenandroid
+package com.example.practica5
 
 import org.junit.Test
 

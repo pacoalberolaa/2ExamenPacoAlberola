@@ -1,4 +1,4 @@
-package com.example.examenandroid
+package com.example.practica5
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -39,11 +39,10 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             when {//trae toda la lista de tareas
                 (!(aplicarFavoritos && aplicarFitness)) -> repositorio.getAllTareas()
                 //Sólo filtra por ESTADO
-                (!aplicarFavoritos && aplicarFitness) -> repositorio.getAllTareasFitness()
+                (!aplicarFavoritos && aplicarFitness) -> repositorio.getAllTareasFitness(aplicarFitness)
                 //Sólo filtra SINPAGAR
-                (aplicarFavoritos && aplicarFitness) -> repositorio.getTareasFitnessYFavaoritas(
-                    aplicarSinPagar)
-                else -> repositorio.getTa()
+                (aplicarFavoritos && aplicarFitness) -> repositorio.getAllTareasFitnessYFavoritas(aplicarFitness, aplicarFavoritos)
+                else -> repositorio.getAllTareasFavoritas(aplicarFavoritos)
             }
         }
     }

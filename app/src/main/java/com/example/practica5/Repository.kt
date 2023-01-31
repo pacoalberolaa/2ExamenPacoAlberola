@@ -1,4 +1,4 @@
-package com.example.examenandroid
+package com.example.practica5
 
 import android.app.Application
 import android.content.Context
@@ -18,5 +18,8 @@ object Repository {
     fun addTarea(tarea: Tarea)= modelTareas.addTarea(tarea)
     suspend fun delTarea(tarea: Tarea)= modelTareas.delTarea(tarea)
     fun getAllTareas()=modelTareas.getAllTareas()
-    fun getTareasFiltroSinPagar (soloSinPagar:Boolean) = modelTareas.getTareasFavoritas(soloSinPagar)
+    fun getAllTareasFitness (fitness:Boolean) = modelTareas.getAllTareasFitness(fitness)
+    fun getAllTareasFavoritas(favoritas:Boolean) = modelTareas.getTareasFavoritas(favoritas)
+    fun getAllTareasFitnessYFavoritas(fitness: Boolean, favoritas: Boolean) = modelTareas.getAllTareasFitnessYFavoritas(fitness, favoritas)
+
     }
