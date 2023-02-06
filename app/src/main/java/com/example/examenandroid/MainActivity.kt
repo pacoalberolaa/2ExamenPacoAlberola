@@ -1,4 +1,4 @@
-package com.example.practica5
+package com.example.examenandroid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.example.practica5.R
 import com.example.practica5.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

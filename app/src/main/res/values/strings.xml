@@ -7,4 +7,9 @@
     <string name="fecha">Fecha</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="action_settings">Action Settings</string>
+
+    <string name="lista_fragment_label">Lista Tareas</string>
+    <string name="tarea_fragment_label">Tarea</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

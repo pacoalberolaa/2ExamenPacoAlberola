@@ -1,4 +1,4 @@
-package com.example.practica5
+package com.example.examenandroid
 
 import android.app.Application
 import android.content.Context
@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 object ModelTempTareas {
     //lista de tareas
@@ -36,48 +37,34 @@ object ModelTempTareas {
         //actualiza el LiveData
         tareasLiveData.postValue(tareas)
     }
-    suspend fun iniciaPruebaTareas() {
-        val nombres = listOf(
-            "Pepe Gotero",
-            "Sacarino Pómez",
-            "Mortadelo Fernández",
-            "Filemón López",
-            "Zipi Climent",
-            "Zape Gómez"
-        )
-        //actualizamos el LiveData
-        tareasLiveData.postValue(tareas)
+    fun iniciaPruebaTareas() {
+        lateinit var tarea: Tarea
+        var i = 1
+        (1..10).forEach {
+            tarea = Tarea(
+                Random.nextBoolean(),
+                Random.nextBoolean(),
+                "Lista $i",
+                "Lista $i"
+            )
+            tareas.add(tarea)
+            i++
+        }
+        //actualiza el LiveData
+        tareasLiveData.value = tareas
     }
 
-    suspend fun delTarea(tarea: Tarea) {
+    fun delTarea(tarea: Tarea) {
         //Thread.sleep(10000)
         tareas.remove(tarea)
         tareasLiveData.postValue(tareas)
     }
 
-    fun getTareasFavoritas(favoritas:Boolean): LiveData<ArrayList<Tarea>> {
-        //devuelve el LiveData con la  lista filtrada o entera
-        tareasLiveData.value=if(favoritas)
-            tareas.filter { !it.favorito } as ArrayList<Tarea>
-        else
-            tareas
-        return tareasLiveData
-    }
 
     fun getAllTareasFitness(fitness:Boolean): LiveData<ArrayList<Tarea>> {
         //devuelve el LiveData con la  lista filtrada o entera
         tareasLiveData.value=if(fitness)
-            tareas.filter { !it.favorito } as ArrayList<Tarea>
-        else
-            tareas
-        return tareasLiveData
-    }
-
-    fun getAllTareasFitnessYFavoritas(fitness: Boolean, favoritas: Boolean): LiveData<ArrayList<Tarea>>{
-        tareasLiveData.value=if(favoritas || fitness) {
-            tareas.filter { !it.favorito } as ArrayList<Tarea>
-            tareas.filter { !it.fitness } as ArrayList<Tarea>
-        }
+            tareas.filter { it.fitness } as ArrayList<Tarea>
         else
             tareas
         return tareasLiveData
