@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
-    //repositorio
+    //repositorios
     private  val repositorio: Repository
     val comprasLiveData : LiveData<ArrayList<Tarea>>
     private val fitnessLiveData = MutableLiveData<Boolean>(false)
